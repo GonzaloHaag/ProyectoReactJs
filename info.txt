@@ -1,0 +1,498 @@
+CREATE-REACT-APP Y WEBPACK : 
+
+Todos los proyectos arrancan con un archivo index.js que es el punto
+de entrada de la aplicacion. Este archivo se encarga de importar el
+resto de archivos de la aplicacion y de renderizarlos en el DOM.
+
+
+VITE : 
+
+Todos los proyectos arrancan con un archivo main.jsx
+
+
+JSX : 
+
+
+function foo () {
+
+}
+
+foo()   <foo/>     <foo></foo>
+
+
+function Header () {
+    return <h1>Titulo</h1>
+}
+
+
+
+<header></header>
+
+<Header></Header>
+
+
+COMPONENTES: 
+Son funciones
+Estan en mayuscula la primer letra
+Tienen retorno
+Tienen un solo elemento de un retorno
+function App () {
+    return <div> Solo puedo retornar un div,pero dentro puedo colocar otro div
+
+    <h1>Card</h1>
+    <p>Card Description</p>
+    </div>
+}
+
+
+PARA EL PROYECTO : 
+src/
+\__components/
+
+
+PARA LA VIDA REAL SEGUN EL PROFE : 
+
+src/
+|_api
+|_ui/
+|_layout/
+   |_App.js
+   |_Header.js
+   |_Footer.js
+   |_Main.js
+
+
+   |_pages/
+   |_Home.js
+   |_About.js
+
+
+
+SASS / BEM 
+Boostrap
+MAQUETACION: TailwindCSS - Antd - MUI
+
+Instalacion sass : npm i sass -->En otra ventana que donde
+pusimos el npm star
+
+
+
+
+const Header = () => { //Se debe llamar igual que el archivo
+
+    return (
+        <header className="header">
+        <h1 className="header__title">
+          Titulo
+        </h1>
+        <nav className="header__navbar">
+          <a className="header__link" href="">Link</a>
+          <a className="header__link" href="">Link</a>
+          <a className="header__link" href="">Link</a>
+        </nav>
+      </header>
+
+    )
+
+} -> NO ES HTML, ES JAVASCRIPT, MUY IMPORTANTE
+Es como hacer un document.createElement ("header") y archivos
+
+Eventos de REACT : 
+
+onClick:
+<header className="header" onClick = "console.log("Hola mundo")">
+
+TIPOS DE COMPONENTES : 
+
+-Estructurales : Representan grandes partes de la aplicacion(Header,Footer,Main,etc)
+-Reusabilidad
+-Funcionalidad : 
+   -Container Pattern : 
+       -Container
+       -Presentacional
+
+
+Las funciones son dinamicas y reutilizables+
+
+
+
+
+function Nav(parametros) {
+
+}
+Nav({x:1})
+Nav({z:2,y:3})
+
+
+DESTRUCTURING : 
+Tengo un objeto con propiedades, las quiero usar a todas pero escribir menos
+Tengo un array con valores, las quiero usar a todas pero escribir menos
+
+
+const arr = [1,2,3]
+
+const uno = arr[0]
+arr[0]
+
+const dos = arr[1]
+
+const tres = arr[2]
+
+const [uno,dos,tres] = arr;  Estamos diciendo que esa posicion valga lo que esta en arr uno
+
+
+const obj{x:1,y:2,z:3}
+
+const {propYaExsiste:variableNueva} = obj
+
+const{x : x} = obj;
+const{y : y}
+
+es lo mismo que const x = obj.x
+
+Si hubiera una propiedad llamada "y"(izquierda) en el objeto,
+la asignaria a la variable "y" (derecha)
+const {y : y, x : x,z : z} = obj
+
+
+Object Properties Shorthand : 
+
+const nombre = "Horacio";
+
+const nombre =  {nombre}
+
+const {y:y,x:x,z:z} = obj
+const {y,x,z} = obj
+
+
+
+Los dos tipos de componentes que tenemos son : 
+
+class App {}
+
+const App = () => {
+   
+
+}
+
+
+
+Listado de Hooks de react : 
+
+-useState : Me da un estado reactivo nuevo en un componente
+      Siempre retorna un array
+
+      useState() => [a,b] == el useState siempre que se ejecuta
+      me da un array con dos cosas.
+      La primera se llena con lo que esta entre parentesis y la
+      segunda se llena con una funcion anonima que me permite
+      cambiar el valor de a
+      ej:
+
+      useState() => [undefined,()=>{}]
+      useState(0) => [0,()=>{}]
+      useState("horacio) =>["horacio",()=>{}]
+
+
+-useEffect :  Controla el "ciclo de vida" de un componente. Por 
+default, se ejecuta cada vez que el componente se renderiza.
+
+   ej:
+
+      useEffect (a,[b]) => useEffect (funcion,array)
+      useEffect (funcion,array de dependencias)
+
+      const handleAlgo = () => {}
+
+      useEffect(handleAlgo);
+
+      useEffect (()=>{}) :  Este ejecuta su parametro "a" tantas
+      veces como el componente se reejecute
+
+      useEffect (()=>{},[]) : Este ejecuta su parametro "a" una
+      unica vez, solo cuando el componente se monto.
+
+      useEffect(()=>{},[nombre]) : Este ejecuta su parametro "a"
+      cada vez que el valor de nombre cambie.
+   
+-useContext
+
+
+-usereducer
+-useCallback
+-useMemo
+-useRef : Me da un estado no reactivo nuevo de un componente
+
+
+Usamos los hooks porque : 
+
+Para guardar una variable podriamos usar let contador = 0;
+
+con hook
+
+let [counter] = useState(0); Es asincronico, no afecta al resto del programa
+
+counter = counter + 1;
+
+
+
+CICLO DE VIDA : 
+
+MOUNT / montado / montaje
+
+   - constructor
+   - render 
+   - componentDidMount
+
+UPDATE / Actualizacion:
+
+    Puede pasar por los siguientes factores : 
+
+      -Cambio de estado
+      -Cambio de props 
+      -Cambio de contexto
+      -Cambio de padre
+
+
+    - render
+    - componentDidUpdate
+
+UNMOUNT / Desmontado / Desmontaje
+
+    - componentWillUnmount
+
+
+
+
+Promise : Es un objeto
+
+const promise = new Promise ((res,rej)=>{
+
+     
+})
+promise.then(()=>{})
+promise.catch(()=>{})
+promise.finally(()=>{})
+promise.all([])
+const a = caches.open() //Se abre una particion nueva del cache
+const a = fetch()//Enviar o pedir una solicitud a un servidor
+
+
+PROTOCOLO HTTP : Indica como tienen que ser las cosas
+
+maquina 1 ============> maquina 2
+
+REQUEST
+    URL/IP : http://google.com ? parametro & otro parametro..
+    METODO/VERBO : GET - POST - PUT/PATCH - DELETE - ...
+    VERSION : http/1.1
+
+    HEADERS(opcional)
+    BODY(opcional)
+
+    url : api.com/pedidos
+    metodo : POST
+    body : {id:1,titulo:"",cant:2}
+
+
+RESPONSE
+    STATUS CODE : 1xx - 2xx - 3xx - 4xx - 5xx
+    STATUS MESSAGE : 404(status code) Not Found -  500 Internal Server Error
+
+
+
+FETCH + Promise
+fetch(url,[config])
+
+fetch("http://google.com")
+
+const pedido = fetch("imagen.jpg")
+
+pedido.then((respuesta)={
+
+})
+
+pedido.catch(()=>{
+
+})
+
+//Api de fakestore
+
+fetch('https://fakestoreapi.com/products')
+            .then(res=>res.json())
+            .then(json=>console.log(json))
+
+
+
+
+
+
+
+
+export const Carrito = () => {
+  /*TARGET DE UN EVENTO: 
+  e.target = Es el elemento original que dispara el evento*/ 
+    
+
+  //Ultimo proceso de compra
+  const [nombre,setNombre] = useState("");
+  const [email,setEmail] = useState("");
+
+  const [usuarios,setUsuarios] = ([]); //Array vacio para los usuarios
+
+  const handleChangeName = (e) =>{
+    setNombre(e.target.value); //Que la tecla que presiono se vaya guardando en nombre
+  }
+  const handleChangeEmail = (e) =>{
+
+    setEmail(e.target.value);
+
+  }
+   const handleClickTerminar = () =>{
+    console.log(nombre,email) //Para imprimir lo que esta guardado en nombre y en email, lo que escribio el usuario
+     
+     let copia = [...usuarios]; Para una copia al array de usuarios
+     const usuario = {
+      nombre:nombre,
+      email:email -->Nombre y email ingresados anteriormente
+     }
+     copia.push(usuario)
+     setUsuarios(copia)
+
+   }
+
+
+    
+  return (
+    <div>
+      <div>
+      <input type="text" onChange={handleChangeName} placeholder="Nombre"/>
+      </div>
+      <div>
+        <input type="text" onChange={handleChangeEmail} placeholder="Email"/>
+      </div>
+
+        <button onClick={handleClickTerminar}>Terminar Compra</button>
+        {/*En js si un button tiene un click, va a disparar ese evento para todos los elementos padres*/}
+    </div>
+  )
+}
+export default Carrito;
+
+
+
+
+
+
+
+TECNICAS DE RENDERING: 
+
+useMemo(hook): Sirve para memorizar una variable que no sea funcion
+useCallback(hook): SIrve para memorizar variables que sean funciones
+memo(HoC) : Sirve para que el componente se ejecute solo una vez, cada vez que se hace un cambio en un parametro o en algo interno del mismo
+
+
+
+FIREBASE : 
+
+  Proyecto : ->Solo puede tener instalado uno de estos servicios
+
+    - DB 
+    - AUTH
+    - STORAGE
+    - HOSTING
+
+    Proyecto 2:
+     -DB
+     -Storage
+
+
+Servicios que podemos utilizar de firebase : 
+https://firebase.google.com/docs/reference/js?hl=es-419
+
+//COSAS RELACIONADAS A LA BASE DE DATOS DE FIRESTORE
+https://firebase.google.com/docs/reference/js/firestore_.md?authuser=0&hl=es-419#@firebase/firestore
+
+doc - getDoc - getDocs - where - query - collection - addDoc
+
+
+class App  {
+  constructor(props){
+
+  }
+  componentDidMount(){}
+  shouldComponentUpdate(){}
+  componentDidUpdate(){}
+  render(){
+
+  }
+}
+
+function App(props){
+  return (
+    <></>
+  )
+}
+const App = (props) => {
+
+  return (
+    <></>
+  )
+
+}
+
+
+//REPASO DE FIREBASE : 
+
+Paso a paso de pedidos a firebase : 
+1) Entro a la pagina de firebase : npm i firebase
+2) Hago login a la consola : initializeApp() => FirebaseApp
+3) Hago click en firestore al costado : getFirestore(FirebaseApp) =>Firestore
+4) Selecciono la coleccion a trabajar :  collection(Firestore,nombre) => CollectionReference
+5) Hago la consultas : getDoc,getDocs,updateDoc,deleteDoc,addDoc (ABM|CRUD) ->Todas dan una promesa
+
+const pedido = getDocs(CollectionReference,query)
+const pedido = getDoc(CollectionReference,docId)
+const pedido = UpdateDoc(CollectionReference,docId,datos)
+const pedido = deleteDoc(CollectionReference,docId)
+const pedido = addDoc(CollectionReference,docId)
+
+
+productos.forEach(producto=>{
+  addDoc(productosCollection,)
+})
+
+
+TOASTIFY IMPLEMENTACION :  -> PARA SACAR EL CONSOLE.LOG DE CATCH.Error
+1) Instalar la libreria (npm i react toastify )
+2) Importar la hoja de estilos
+3) Poner el componente ToastContainer
+4) toast();
+
+
+
+
+WORKSHOP : NO SE ACEPTAN COMENTARIOS NI CONSOLE.LOG
+
+
+1 - build -> Proceso de agarrar todo lo que escribimos 
+transformarlo a un archivo final.Lo que hace es acortar
+caracteres.
+EL BUILD SE HACE ASI : npm run build y le doy entre
+
+
+
+2 - deploy
+3 - variables de entorno
+4 - documentacion :
+
+   -Descripcion del proyecto(flujo del trabajo , instalacion)
+   -Herramientas y tecnologias utilizadas(que coincida con el package.json)
+
+   ![imagen] (hhtps)
+
+   -Videos, filmando como entro a las categorias, carrito
+   y todo el funcionamiento de mi pagina.
+   -Pueden ser screenshots tambien de mi pagina en vez de un Video
+   maximo 6 imagenes.
+

@@ -68,3 +68,25 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+# DOCUMENTACION DE LA APP
+
+Segmentos minimos que tiene que tener la documentacion : 
+
+* Lo que hace la aplicacion que cre
+* Uso e Instalacion 
+
+'''
+
+>git clone http://
+
+*Tecnologias usadas ->Tendria que coincidir con el packe.json. Use sass,react,firebase,boostrap,react-router-dom.
+
+* Screenshots de cada seccion, catalogo,carrito
+o GIF o deploy(pagina subida a un servidor)
+
+
+/public-html
+
+
